@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { listUsers, listUsersFull, wipeUsers } from "../db.js";
+import { listUsersFull, wipeUsers } from "../db.js";
 
 const router = Router();
 

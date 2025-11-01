@@ -1,8 +1,10 @@
 import { Router } from "express";
 import { findUserByName } from "../db.js";
-import { pbkdf2Async, randomSalt, toHex, fromHex, timingSafeEqual } from "../pbkdf2.js";
+import { pbkdf2Async, randomSalt, toHex } from "../pbkdf2.js";
 
 const router = Router();
+
+const fromHex = (hex) => Buffer.from(hex, "hex");
 
 router.post("/", async (req, res) => {
   try {
@@ -18,9 +20,12 @@ router.post("/", async (req, res) => {
     const dkLen = row ? row.dkLen : 32;
     const target = row ? fromHex(row.hash_hex) : Buffer.alloc(dkLen, 0);
 
-    const { key, ms } = await pbkdf2Async(password, salt, iterations, dkLen, prf);
-    const match = timingSafeEqual(key, target);
 
+    //Creo la key y tambien guardo el tiempo que tardo
+    const { key, ms } = await pbkdf2Async(password, salt, iterations, dkLen, prf);
+    const match = toHex(key) === toHex(target)
+
+    //creo el json de respuesta
     res.json({
       ok: match,
       user,

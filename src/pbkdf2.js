@@ -13,5 +13,3 @@ export function pbkdf2Async(password, salt, iterations, keyLen, digest) {
 
 export const randomSalt = (bytes = 16) => crypto.randomBytes(bytes);
 export const toHex = (buf) => buf.toString("hex");
-export const fromHex = (hex) => Buffer.from(hex, "hex");
-export const timingSafeEqual = (a, b) => a.length === b.length && crypto.timingSafeEqual(a, b);

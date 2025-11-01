@@ -13,9 +13,11 @@ router.post("/", async (req, res) => {
     } = req.body || {};
     if (!user || !password) return res.status(400).json({ error: "Faltan 'user' y/o 'password'." });
 
+    //Llamo a las funciones de pbkdf2.js
     const salt = randomSalt(saltBytes);
     const { key, ms } = await pbkdf2Async(password, salt, iterations, dkLen, prf);
 
+    //Guardo los datos en la bd
     await insertUser({
       user,
       salt_hex: toHex(salt),
