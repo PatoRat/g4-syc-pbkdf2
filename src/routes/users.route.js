@@ -3,11 +3,6 @@ import { listUsers, listUsersFull, wipeUsers } from "../db.js";
 
 const router = Router();
 
-/** GET /users (resumen) */
-router.get("/", async (_req, res) => {
-  try { res.json({ ok: true, users: await listUsers() }); }
-  catch (e) { console.error(e); res.status(500).json({ error: "Error en /users" }); }
-});
 
 /** GET /users/full (incluye salt y hash) */
 router.get("/full", async (_req, res) => {
