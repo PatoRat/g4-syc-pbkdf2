@@ -19,6 +19,7 @@
     <nav class="tabs">
       <button class="tab active" data-target="#register">Registro</button>
       <button class="tab" data-target="#login">Login</button>
+      <button class="tab" data-target="#data">Datos</button>
     </nav>
 
     <!-- REGISTRO -->
@@ -93,13 +94,43 @@
       <pre id="loginOutput" class="output" aria-live="polite"></pre>
     </section>
 
+    <!-- DATOS -->
+    <section id="data" class="panel">
+      <h2 class="panel-title">Datos de la base</h2>
+
+      <div class="actions">
+        <button id="refreshBtn" type="button">Refrescar</button>
+        <button id="wipeBtn" type="button">Borrar TODO</button>
+        <span id="dataStatus" class="status"></span>
+      </div>
+
+      <div class="table-wrap">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Salt (hex)</th>
+                <th>Hash (hex)</th>
+            </tr>
+            </thead>
+            <tbody id="dataTbody">
+            <!-- filas dinámicas -->
+            </tbody>
+        </table>
+        </div>
+
+    </section>
+
     <footer>
-      <p>Endpoints usados: <code>POST /register</code> y <code>POST /login</code>.</p>
+      <p>Endpoints usados: <code>POST /register</code>, <code>POST /login</code>, <code>GET /users/full</code> y <code>DELETE /users</code>.</p>
     </footer>
   </div>
-
   <script src="/app.js" defer></script>
+  <script src="/register.js" defer></script>
+  <script src="/login.js" defer></script>
+  <script src="/data.js" defer></script>
 </body>
 </html>
+
 
 

@@ -17,6 +17,7 @@ Este proyecto permite:
 
 ---
 
+
 ## ⚙️ Instalación
 
 ```bash
@@ -29,3 +30,13 @@ npm install
 
 # (opcional) Instalar nodemon para desarrollo
 npm install --save-dev nodemon
+
+```
+
+## EJECUCION
+
+Para ejecutarlo se debe correr
+npm run dev
+
+El programa sera visible en:
+http://localhost:3000/
