@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>PBKDF2 – Registro & Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">🔐</div>
+      <div>
+        <h1>PBKDF2 – Demo</h1>
+        <p class="subtitle">Registro y Login usando API REST en Node.js</p>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-target="#register">Registro</button>
+      <button class="tab" data-target="#login">Login</button>
+    </nav>
+
+    <!-- REGISTRO -->
+    <section id="register" class="panel active">
+      <h2 class="panel-title">Crear cuenta</h2>
+      <form id="registerForm">
+        <div class="grid-2">
+          <div class="field">
+            <label for="reg-user">Usuario</label>
+            <input id="reg-user" name="user" type="text" placeholder="usuario" required>
+          </div>
+          <div class="field">
+            <label for="reg-pass">Contraseña</label>
+            <input id="reg-pass" name="password" type="password" placeholder="••••••" required>
+          </div>
+        </div>
+
+        <details class="advanced">
+          <summary>Parámetros avanzados</summary>
+          <div class="grid-4">
+            <div class="field">
+              <label for="iter">Iteraciones</label>
+              <input id="iter" name="iterations" type="number" min="10000" step="1000" value="150000">
+            </div>
+            <div class="field">
+              <label for="prf">PRF</label>
+              <select id="prf" name="prf">
+                <option value="sha256">sha256</option>
+                <option value="sha512">sha512</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="dk">dkLen (bytes)</label>
+              <input id="dk" name="dkLen" type="number" min="16" step="1" value="32">
+            </div>
+            <div class="field">
+              <label for="saltb">Salt (bytes)</label>
+              <input id="saltb" name="saltBytes" type="number" min="8" step="1" value="16">
+            </div>
+          </div>
+        </details>
+
+        <div class="actions">
+          <button type="submit">Crear cuenta</button>
+          <span id="registerStatus" class="status"></span>
+        </div>
+      </form>
+
+      <pre id="registerOutput" class="output" aria-live="polite"></pre>
+    </section>
+
+    <!-- LOGIN -->
+    <section id="login" class="panel">
+      <h2 class="panel-title">Ingresar</h2>
+      <form id="loginForm">
+        <div class="grid-2">
+          <div class="field">
+            <label for="log-user">Usuario</label>
+            <input id="log-user" name="user" type="text" placeholder="usuario" required>
+          </div>
+          <div class="field">
+            <label for="log-pass">Contraseña</label>
+            <input id="log-pass" name="password" type="password" placeholder="••••••" required>
+          </div>
+        </div>
+        <div class="actions">
+          <button type="submit">Ingresar</button>
+          <span id="loginStatus" class="status"></span>
+        </div>
+      </form>
+
+      <pre id="loginOutput" class="output" aria-live="polite"></pre>
+    </section>
+
+    <footer>
+      <p>Endpoints usados: <code>POST /register</code> y <code>POST /login</code>.</p>
+    </footer>
+  </div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
+
+

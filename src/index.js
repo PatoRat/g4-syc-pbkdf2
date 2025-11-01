@@ -51,6 +51,7 @@ async function initDB() {
 // ---------- App ----------
 const app = express();
 app.use(express.json());
+app.use(express.static('public')); // sirve /public como raíz estática
 
 // Healthcheck
 app.get("/", (_req, res) => {
