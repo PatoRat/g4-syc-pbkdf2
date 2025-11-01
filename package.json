@@ -1,0 +1,18 @@
+{
+  "name": "g4-syc-pbkdf2",
+  "version": "1.0.0",
+  "description": "Acá iría una descripcion del trabajo y un breve resumen de PBKDF",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
